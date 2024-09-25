@@ -7,7 +7,8 @@ React.useEffect(()=>{
  redirect('/dashboard');
 },[])
   return (
- <></>
+    <>
+    </>
   );
 }
 
