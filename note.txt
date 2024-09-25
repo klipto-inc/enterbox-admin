@@ -1,0 +1,14 @@
+METHOD POST: http://localhost:8000/api/v1/admin/component/webcomponent
+PAYLOAD: 
+"  category: string;
+  image: string;
+  preview: string;
+  isPremuim: boolean;
+  children: string;
+ name: string;
+_id: string,
+"
+all as a FormData
+METHOD POST: http://localhost:8000/api/v1/admin/component/createwebcategory
+PAYLOAD: 
+" category: string"
