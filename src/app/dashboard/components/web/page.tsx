@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WebTemplates } from "@/components/templates";
 import CreateTemplate  from "@/components/templates/CreateTemplate";
 import CreateComponent from "@/components/component/createComponent";
+import { ComponentTemplates } from "@/components/component/ComponentTemplates";
 
 export default function Page() {
   return (
@@ -16,11 +17,11 @@ export default function Page() {
         </TabsList>
         <TabsContent value="account">
           <div>
-            <WebTemplates />
+            <ComponentTemplates />
           </div>
         </TabsContent>
         <TabsContent value="password">
-          <CreateComponent/>
+          <CreateComponent />
         </TabsContent>
       </Tabs>
     </div>

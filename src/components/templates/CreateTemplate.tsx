@@ -1,16 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
+
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import {
   Card,
   CardContent,
@@ -33,8 +30,22 @@ import { Textarea } from "@/components/ui/textarea";
 import React, { useState, useRef, useEffect } from "react";
 import html2canvas from "html2canvas";
 import DOMPurify from "dompurify";
+import { apiResponse } from "@/utils";
 
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { toast } from "sonner";
+import HtmlValue from "./HtmlValue";
 const CreateTemplate = () => {
+
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [children, setChildren] = useState("");
@@ -44,7 +55,6 @@ const CreateTemplate = () => {
   const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
   const [inputHtml, setInputHtml] = useState<string>("");
-  const captureRef = useRef<HTMLDivElement>(null); // Type for ref
 
   const [components, setComponents] = useState<
     {
@@ -71,44 +81,21 @@ const CreateTemplate = () => {
       preview,
     };
     console.log(newComponent);
-    setComponents([...components, newComponent]);
+    // setComponents([...components, newComponent]);
     setLoading(false);
     alert("Component created successfully");
   };
 
-  useEffect(() => {
-    // Dynamically inject Tailwind CSS
-    const script = document.createElement("script");
-    script.src = "https://cdn.tailwindcss.com";
-    document.head.appendChild(script);
 
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
 
-  const handleCaptureClick = async () => {
-    if (captureRef.current) {
-      const canvas = await html2canvas(captureRef.current);
-      const imgData = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = imgData;
-      link.download = `component.png`;
-      link.click();
-    }
-  };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const sanitizedHtml = DOMPurify.sanitize(event.target.value);
-    setInputHtml(sanitizedHtml);
-  };
+
 
   return (
-    <div className="p-4 grid grid-cols-2 gap-3">
+    <div className="py-4 px-24">
       <div className="mb-4 p-2">
-
         {/* form */}
-        <Card className="w-full border-0 rounded-none h-[70vh] flex justify-center flex-col border-r border-gray-500">
+        <Card className="w-full border-0 rounded-none h-[70vh] flex justify-center flex-col ">
           <CardHeader className=" flex items-center justify-center">
             <CardDescription>
               Deploy your new Template in one-click.
@@ -140,22 +127,14 @@ const CreateTemplate = () => {
 
                   <Input id="picture" type="file" />
                 </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="name">Html :</Label>
-                  <textarea
-                    // value={inputHtml}
-                    onChange={handleInputChange}
-                    className="w-full  h-40 p-2 border border-gray-300 rounded"
-                    placeholder="Enter your HTML with Tailwind classes here..."
-                  />
-                </div>
+                <HtmlValue inputHtml={inputHtml} setInputHtml={setInputHtml} />
               </div>
             </form>
           </CardContent>
           <CardFooter className="flex justify-between">
             <button
               className="border px-4 p-1.5 rounded"
-              onClick={() => alert("yahhh")}
+              onClick={CreateTemplate}
             >
               Deploy
             </button>
@@ -163,19 +142,11 @@ const CreateTemplate = () => {
         </Card>
       </div>
 
-      <div className="mb-4 border p-4 bg-gray-300 rounded">
-        <h2 className="text-lg text-center text-black shadow-purple-400 font-semibold mb-2">Preview:</h2>
-        {
-          inputHtml? (
-          <div
-          ref={captureRef}
-          className="p-4 bg-white border w-fit min-w-[200px] rounded flex items-center justify-center"
-          dangerouslySetInnerHTML={{ __html: inputHtml }}
-        />) : null
-
-        }
-        
-      </div>
+      {/* <div className="mb-4 border p-4 bg-gray-300 rounded">
+        <h2 className="text-lg text-center text-black shadow-purple-400 font-semibold mb-2">
+          Preview:
+        </h2>
+      </div> */}
     </div>
   );
 };

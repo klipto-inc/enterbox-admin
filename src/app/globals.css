@@ -29,5 +29,24 @@ body{
   background-color: #1E293B;
   border-radius: 4px;
 }
+
+/* Target pseudo-elements if they are the issue */
+.element-class::before,
+.element-class::after {
+    background: transparent !important; /* Make background transparent */
+    opacity: 1 !important; /* Ensure full visibility */
+}
+
+/* If there's a general background color causing the issue */
+.element-class {
+    background: transparent !important; /* Remove any black background */
+}
+
+/* Remove any unexpected box-shadow or opacity */
+.element-class {
+    box-shadow: none !important; /* Remove box-shadow */
+    opacity: 1 !important;       /* Set opacity to fully visible */
+}
+
  
 

@@ -8,8 +8,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Button } from "../ui/button";
-
+import { toast } from "sonner";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
 interface WebTemTypes {
   _id: string;
   category: string;
@@ -19,7 +20,7 @@ interface WebTemTypes {
   html: string;
   _v: number;
 }
-export const WebTemplates = () => {
+export const ComponentTemplates = () => {
   let [data, setData] = React.useState<WebTemTypes[]>([]);
   let [loading, setLoading] = React.useState(false);
   const [page, setPage] = React.useState<number>(1);
@@ -78,29 +79,52 @@ export const WebTemplates = () => {
     fetchWebTemplate(1, false);
   }, [fetchWebTemplate]);
 
-React.useEffect(() => {
-  if (paginatedloading || loading || !hasMore) return;
-  const target = document.getElementById("scroll-anchor");
 
-  if (observer.current) observer.current.disconnect();
 
-  const callback = (entries: IntersectionObserverEntry[]) => {
-    if (entries[0].isIntersecting && hasMore) {
-      setPage((prevPage) => prevPage + 1);
-    }
+  let DeleteCategory = async (id: string) => {
+     toast("deleting");
+     console.log(id, "product id ");
+     try {
+       let response = await apiResponse.delete(
+         `component/deletewebcomponent/${id}`
+       );
+
+       console.log(response, "response");
+
+       if (response.status === 200) {
+      
+         toast(`${response?.data?.message}`);
+         window.location.reload()
+      ;
+       }
+     } catch (error: any) {
+       toast(error);
+     } finally {
+     }
   };
+  
+  React.useEffect(() => {
+    if (paginatedloading || loading || !hasMore) return;
+    const target = document.getElementById("scroll-anchor");
 
-  observer.current = new IntersectionObserver(callback);
-
-  if (target) {
-    observer.current.observe(target);
-  }
-
-  return () => {
     if (observer.current) observer.current.disconnect();
-  };
-}, [paginatedloading, loading, hasMore]);
 
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      if (entries[0].isIntersecting && hasMore) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    };
+
+    observer.current = new IntersectionObserver(callback);
+
+    if (target) {
+      observer.current.observe(target);
+    }
+
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
+  }, [paginatedloading, loading, hasMore]);
 
   React.useEffect(() => {
     if (page > 1 && hasMore) {
@@ -197,8 +221,7 @@ React.useEffect(() => {
                         <Dialog>
                           <DialogTrigger asChild>
                             <Button
-                              // variant="outline"
-                         
+                            // variant="outline"
                             >
                               <TooltipProvider>
                                 <Tooltip>
@@ -247,7 +270,13 @@ React.useEffect(() => {
                                 Component ?
                               </h3>
                               <DialogTrigger asChild>
-                                <Button className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 cursor-pointer">
+                                <Button
+                                  className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 cursor-pointer"
+                                  onClick={() => {
+                                    let id = data?._id;
+                                    DeleteCategory(id);
+                                  }}
+                                >
                                   Yes, I&nbsp;m sure
                                 </Button>
                               </DialogTrigger>
