@@ -7,7 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
@@ -38,7 +38,7 @@ export const ComponentTemplates = () => {
       }
       try {
         let response = await apiResponse.get(
-          `component/webcomponentadmin?page=${page}&limit=10`
+          `emailcomponent/emailcomponentadmin?page=${page}&limit=6`
         );
 
         if (response.status === 200) {
@@ -86,7 +86,7 @@ export const ComponentTemplates = () => {
      console.log(id, "product id ");
      try {
        let response = await apiResponse.delete(
-         `component/deletewebcomponent/${id}`
+         `emailcomponent/deletewebcomponent/${id}`
        );
 
        console.log(response, "response");
@@ -137,7 +137,7 @@ export const ComponentTemplates = () => {
       <div className="grid  mb-40 gap-x-2 md:gap-x-2 lg:gap-x-3 gap-y-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg::grid-cols-3 xl:grid-cols-4 mt-8">
         {loading ? (
           <>
-            {Array.from({ length: 10 }).map((_, index) => {
+            {Array.from({ length: 4 }).map((_, index) => {
               return (
                 <div
                   className="space-y-5 rounded-2xl bg-white/5 p-4"

@@ -38,23 +38,30 @@ import {
  
 } from "@/components/ui/drawer";
 import { toast } from "sonner";
+import parse from "html-react-parser";
+
 
 
 interface CaptureProps {
   inputHtml: string;
   setInputHtml: React.Dispatch<React.SetStateAction<string>>;
-  setImage?: React.Dispatch<React.SetStateAction<null | string>>
+  setnewHtmlValue: React.Dispatch<React.SetStateAction<string>>;
+  setImage?: React.Dispatch<React.SetStateAction<null | string>>;
 }
 
-export default function HtmlValue({ inputHtml, setInputHtml ,setImage}: CaptureProps) {
+export default function HtmlValue({
+  inputHtml,
+  setInputHtml,
+  setImage,
+  setnewHtmlValue,
+}: CaptureProps) {
   //   const [inputHtml, setInputHtml] = useState<string>("");
   const captureRef = useRef<HTMLDivElement>(null); // Type for ref
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // New state to control the drawer
 
   useEffect(() => {
     const link = document.createElement("link");
-    link.href =
-      "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css";
+    link.href = "https://cdn.tailwindcss.com/3.4.3";
     link.rel = "stylesheet";
     document.head.appendChild(link);
 
@@ -88,7 +95,7 @@ export default function HtmlValue({ inputHtml, setInputHtml ,setImage}: CaptureP
     toast("converting to image..");
 
     try {
-      const response = await apiResponse.post("template/capturehtml", {
+      const response = await apiResponse.post("category/capturehtml", {
         htmlContent: inputHtml,
       });
       const data = await response.data;
@@ -99,9 +106,8 @@ export default function HtmlValue({ inputHtml, setInputHtml ,setImage}: CaptureP
         toast("Image captured successfully");
       }
 
-        const screenshotBase64 = `data:image/png;base64,${data?.data}`;
-     
-   
+      const screenshotBase64 = `data:image/png;base64,${data?.data}`;
+
       // Trigger the download of the image
 
       downloadImage(screenshotBase64, "screenshot.png");
@@ -120,6 +126,7 @@ export default function HtmlValue({ inputHtml, setInputHtml ,setImage}: CaptureP
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setnewHtmlValue(event.target.value);
     const sanitizedHtml = DOMPurify.sanitize(event.target.value);
     setInputHtml(sanitizedHtml);
   };
@@ -143,7 +150,7 @@ export default function HtmlValue({ inputHtml, setInputHtml ,setImage}: CaptureP
               ref={captureRef}
               className="p-4 w-full rounded flex items-center justify-center text-black bg-white"
               dangerouslySetInnerHTML={{
-                __html: `<div class='w-full'>${inputHtml}</div>`,
+                __html: `<div class='w-full prose'>${inputHtml}</div>`,
               }}
             />
           </ScrollArea>

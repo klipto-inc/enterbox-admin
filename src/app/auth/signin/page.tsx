@@ -83,7 +83,6 @@ const Page = () => {
         withCredentials: true,
       });
 
-      console.log(response);
       if (response.status === 200) {
         enqueueSnackbar("Logged in Successfully", {
           variant: "success",
@@ -169,7 +168,7 @@ const Page = () => {
 
   const handleGoogleSignIn = async (provider: string, data: any) => {
     setLoading2(true);
-    console.log("data", data);
+
 
     const Formdata = {
       email: data.email,
@@ -183,8 +182,6 @@ const Page = () => {
         const response = await apiResponse.post("auth/google", Formdata, {
           withCredentials: true,
         });
-
-        console.log(response);
         if (response.status === 200) {
           enqueueSnackbar("Logged in Successfully", {
             variant: "success",

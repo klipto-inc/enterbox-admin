@@ -60,7 +60,7 @@ const CreateComponent = () => {
   const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
   const [inputHtml, setInputHtml] = useState<string>("");
-    let [newHtmlValue, setnewHtmlValue] = useState<string>("");
+  let [newHtmlValue, setnewHtmlValue] = useState<string>("");
   let [cat, setCat] = useState<Category[]>([]);
   let [newLoad, setNewLoad] = useState<boolean>(false);
   const CreateTemplate = async () => {
@@ -75,7 +75,7 @@ const CreateComponent = () => {
         preview,
       };
       let response = await apiResponseFileUpload.post(
-        "component/webcomponent",
+        "emailcomponent/emailcomponentadmin",
         {
           name: name,
           category: category,
@@ -103,7 +103,7 @@ const CreateComponent = () => {
   let fetchNewCat = async () => {
     setLoading(true);
     try {
-      let response = await apiResponse.get("component/getcategory");
+      let response = await apiResponse.get("emailcomponent/reademailcategory");
       if (response.status === 200) {
         let data = response.data?.data;
         setCat(data);

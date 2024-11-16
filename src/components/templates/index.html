@@ -1,13 +1,250 @@
-<div class="relative inline-flex items-center justify-center gap-4 group ">
+<html>
+  <head id="iou8" data-gjs-type="head">
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/preline@2.5.0/dist/preline.min.js"
+    ></script>
+    <script src="https://cdn.tailwindcss.com/3.4.3"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/preline@2.5.0/dist/preline.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/preline@2.5.0/dist/preline.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
+    />
+ 
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1199.0" data-gr-ext-installed="">
+    <style>
+      body {
+        background-color: #fff;
+      }
+      * ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+      }
+      * ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      * ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      [data-gjs-type="wrapper"] {
+        min-height: 100vh;
+        padding-top: 0.001em;
+      }
+
+      .gjs-dashed *[data-gjs-highlightable] {
+        outline: 1px dashed rgba(170, 170, 170, 0.7);
+        outline-offset: -2px;
+      }
+
+      .gjs-selected {
+        outline: 2px solid #3b97e3 !important;
+        outline-offset: -2px;
+      }
+
+      .gjs-selected-parent {
+        outline: 2px solid #ffca6f !important;
+      }
+
+      .gjs-no-select {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+      }
+
+      .gjs-freezed {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .gjs-no-pointer {
+        pointer-events: none;
+      }
+
+      .gjs-pointer-init {
+        pointer-events: initial;
+      }
+
+      .gjs-plh-image {
+        background: #f5f5f5;
+        border: none;
+        height: 100px;
+        width: 100px;
+        display: block;
+        outline: 3px solid #ffca6f;
+        cursor: pointer;
+        outline-offset: -2px;
+      }
+
+      .gjs-grabbing {
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+      }
+
+      .gjs-is__grabbing {
+        overflow-x: hidden;
+      }
+
+      .gjs-is__grabbing,
+      .gjs-is__grabbing * {
+        cursor: grabbing !important;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
     <div
-        class="absolute inset-0 duration-1000 opacity-60 transitiona-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200">
+      data-gjs-highlightable="true"
+      id="ikvg"
+      data-gjs-type="wrapper"
+      class=""
+    >
+      <div
+        data-gjs-highlightable="true"
+        id="ibnp"
+        data-gjs-type="custom-code"
+        draggable="true"
+        class=""
+      >
+        <nav
+          data-gjs-highlightable="true"
+          id="i6k5"
+          data-gjs-type="default"
+          draggable="true"
+          class="flex flex-wrap items-center justify-between p-3 bg-teal-200/20"
+        >
+          <img
+            id="i8z1"
+            data-gjs-type="image"
+            draggable="true"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik0yLjI4IDNMMSA0LjI3bDIgMlYxOWMwIDEuMS45IDIgMiAyaDEyLjczbDIgMkwyMSAyMS43MiAyLjI4IDNtMi41NSAwTDIxIDE5LjE3VjVhMiAyIDAgMCAwLTItMkg0LjgzTTguNSAxMy41bDIuNSAzIDEtMS4yNUwxNC43MyAxOEg1bDMuNS00LjV6Ij48L3BhdGg+CiAgICAgIDwvc3ZnPg=="
+            alt=""
+            class="h-10 w-10"
+          />
+          <div
+            data-gjs-highlightable="true"
+            id="i6mb"
+            data-gjs-type="default"
+            draggable="true"
+            class="flex md:hidden"
+          >
+            <div
+              data-gjs-highlightable="true"
+              id="hamburger"
+              data-gjs-type="default"
+              draggable="true"
+            >
+              <img
+                id="io8f"
+                data-gjs-type="image"
+                draggable="true"
+                src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png"
+                width="48"
+                height="48"
+                class="toggle block"
+              /><img
+                id="i6g5"
+                data-gjs-type="image"
+                draggable="true"
+                src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png"
+                width="48"
+                height="48"
+                class="toggle hidden gjs-selected"
+              />
+            </div>
+          </div>
+          <div
+            data-gjs-highlightable="true"
+            id="i3uai"
+            data-gjs-type="default"
+            draggable="true"
+            class="toggle w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none hidden"
+          >
+            <a
+              data-gjs-highlightable="true"
+              id="ilz7p"
+              data-gjs-type="link"
+              draggable="true"
+              href="#"
+              class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
+              >Home </a
+            ><a
+              data-gjs-highlightable="true"
+              id="icup8"
+              data-gjs-type="link"
+              draggable="true"
+              href="#"
+              class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
+              >Products </a
+            ><a
+              data-gjs-highlightable="true"
+              id="ihp3r"
+              data-gjs-type="link"
+              draggable="true"
+              href="#"
+              class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
+              >Pricing </a
+            ><a
+              data-gjs-highlightable="true"
+              id="i0glh"
+              data-gjs-type="link"
+              draggable="true"
+              href="#"
+              class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
+              >Contact
+            </a>
+          </div>
+          <a
+            data-gjs-highlightable="true"
+            id="iaqiv"
+            data-gjs-type="link"
+            draggable="true"
+            href="#"
+            class="toggle md:flex w-full md:w-auto px-4 py-2 text-right bg-teal-900 hover:bg-teal-500 text-white md:rounded hidden"
+            >Create Account
+          </a>
+        </nav>
+      </div>
     </div>
-    <a href="#" title="payment"
-        class="group relative inline-flex items-center justify-center text-base rounded-xl bg-gray-900 px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30"
-        role="button"  style="padding-bottom: 30px;">Get Started For Free<svg class="mt-0.5 ml-2 -mr-1 stroke-white stroke-2" fill="none" width="10"
-            height="10" viewBox="0 0 10 10" aria-hidden="true">
-            <path class="transition opacity-0 group-hover:opacity-100" d="M0 5h7"></path>
-            <path class="transition group-hover:translate-x-[3px]" d="M1 1l4 4-4 4"></path>
-        </svg>
-    </a>
-</div>
+    <div class="gjs-css-rules">
+      <div id="gjs-css-rules">
+        <style></style><style></style><style></style><style></style
+        ><style></style>
+      </div>
+      <div id="gjs-css-rules-992"></div>
+      <div id="gjs-css-rules-768"></div>
+      <div id="gjs-css-rules-480">
+        <style></style><style></style><style></style><style></style
+        ><style></style>
+      </div>
+    </div>
+    <div class="gjs-js-cont">
+      <div data-id="i6k5">
+        <script>
+          setTimeout(function () {
+            var item = document.getElementById("i6k5");
+            if (!item) return;
+            (function () {
+              let el = this;
+
+              document.getElementById("hamburger").onclick =
+                function toggleMenu() {
+                  const navToggle = document.getElementsByClassName("toggle");
+                  for (let i = 0; i < navToggle.length; i++) {
+                    navToggle.item(i).classList.toggle("hidden");
+                  }
+                };
+            }).bind(item)({});
+          }, 1);
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
